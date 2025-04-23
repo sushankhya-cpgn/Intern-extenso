@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, request
 import requests
 import base64
+import time
 
 # Flask app initialization
 app = Flask(__name__)
@@ -27,7 +28,8 @@ def handle_minio_event():
         "conf": {
             "file_name": filename
         },
-        "dag_run_id": f"manual__{filename.replace('/', '_')}"
+        # "dag_run_id": f"manual__{filename.replace('/', '_')}"
+        "dag_run_id": f"manual__{time.time()}"
     }
 
     # Trigger the DAG
